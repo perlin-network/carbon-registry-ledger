@@ -4,7 +4,8 @@
   "description": "PERL carbon registry ledger",
   "license": "UNLICENSED",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^4.9.3",
+    "@openzeppelin/hardhat-upgrades": "^2.1.1",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
