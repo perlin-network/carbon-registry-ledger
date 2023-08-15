@@ -15,5 +15,4 @@ const appConfig: AppConfig = {
   etherscanApiKey: `${env.ETHERSCAN_API_KEY}`,
 };
 
-console.log(appConfig);
 export default appConfig;

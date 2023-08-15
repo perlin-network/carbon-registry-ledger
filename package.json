@@ -37,8 +37,10 @@
     "compile": "npx hardhat compile --no-typechain",
     "types": "npx hardhat typechain",
     "build": "yarn compile && yarn types",
-    "deploy": "npx hardhat run scripts/deploy.ts",
-    "verify": "npx hardhat verify-env --template Lock --address",
+    "deploy:test": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "deploy": "npx hardhat run scripts/deploy.ts --network mainnet",
+    "verify:test": "npx hardhat verify --network sepolia",
+    "verify": "npx hardhat verify --network mainnet",
     "clean": "npx hardhat clean",
     "test": "npx hardhat test"
   }
