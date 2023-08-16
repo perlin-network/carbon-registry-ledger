@@ -1,4 +1,4 @@
-# PERLIN Ledger Smart Contract
+# PERL Ledger Smart Contract
 
 Distributed version of the PERLIN cabron registry ledger.
 
@@ -7,14 +7,14 @@ Distributed version of the PERLIN cabron registry ledger.
 - *sepolia* 
 - *mainnet*
 
-## STEPS for contract deployment
+## Steps for the contract deployment
 
 1. Build the upgradable contract.
 ```
 yarn build
 ```
 
-2. Run tests to ensure nothing's broken.
+2. Run tests to ensure everything's working as expected.
 ```
 yarn test
 
@@ -26,7 +26,7 @@ yarn deploy
 
 4. Verify the uploaded contract.
 ```
-yarn verify {{paste address here}}
+yarn verify {{address_output_here}}
 ```
 
 ### Deployed contracts
