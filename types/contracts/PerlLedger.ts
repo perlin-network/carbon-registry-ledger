@@ -25,16 +25,16 @@ import type {
 
 export declare namespace PerlLedger {
   export type CreditOverallStruct = {
-    txId: string;
+    txRef: string;
     txType: string;
     credit: BigNumberish;
   };
 
   export type CreditOverallStructOutput = [
-    txId: string,
+    txRef: string,
     txType: string,
     credit: bigint
-  ] & { txId: string; txType: string; credit: bigint };
+  ] & { txRef: string; txType: string; credit: bigint };
 }
 
 export interface PerlLedgerInterface extends Interface {
@@ -42,7 +42,8 @@ export interface PerlLedgerInterface extends Interface {
     nameOrSignature:
       | "createCreditOverall"
       | "creditOveralls"
-      | "getCreditOverall"
+      | "getCreditOverallCount"
+      | "getCreditOveralls"
       | "initialize"
       | "owner"
       | "renounceOwnership"
@@ -59,10 +60,14 @@ export interface PerlLedgerInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "creditOveralls",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getCreditOverallCount",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getCreditOverall",
+    functionFragment: "getCreditOveralls",
     values: [string]
   ): string;
   encodeFunctionData(
@@ -88,7 +93,11 @@ export interface PerlLedgerInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getCreditOverall",
+    functionFragment: "getCreditOverallCount",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getCreditOveralls",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
@@ -178,10 +187,10 @@ export interface PerlLedger extends BaseContract {
   >;
 
   creditOveralls: TypedContractMethod<
-    [arg0: string],
+    [arg0: string, arg1: BigNumberish],
     [
       [string, string, bigint] & {
-        txId: string;
+        txRef: string;
         txType: string;
         credit: bigint;
       }
@@ -189,9 +198,11 @@ export interface PerlLedger extends BaseContract {
     "view"
   >;
 
-  getCreditOverall: TypedContractMethod<
-    [_txRef: string],
-    [PerlLedger.CreditOverallStructOutput],
+  getCreditOverallCount: TypedContractMethod<[_txId: string], [bigint], "view">;
+
+  getCreditOveralls: TypedContractMethod<
+    [_txId: string],
+    [PerlLedger.CreditOverallStructOutput[]],
     "view"
   >;
 
@@ -221,10 +232,10 @@ export interface PerlLedger extends BaseContract {
   getFunction(
     nameOrSignature: "creditOveralls"
   ): TypedContractMethod<
-    [arg0: string],
+    [arg0: string, arg1: BigNumberish],
     [
       [string, string, bigint] & {
-        txId: string;
+        txRef: string;
         txType: string;
         credit: bigint;
       }
@@ -232,10 +243,13 @@ export interface PerlLedger extends BaseContract {
     "view"
   >;
   getFunction(
-    nameOrSignature: "getCreditOverall"
+    nameOrSignature: "getCreditOverallCount"
+  ): TypedContractMethod<[_txId: string], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "getCreditOveralls"
   ): TypedContractMethod<
-    [_txRef: string],
-    [PerlLedger.CreditOverallStructOutput],
+    [_txId: string],
+    [PerlLedger.CreditOverallStructOutput[]],
     "view"
   >;
   getFunction(

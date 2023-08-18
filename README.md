@@ -31,5 +31,5 @@ yarn verify {{address_output_here}}
 
 ### Deployed contracts
 
-- [*PERL Ledger sepolia*](https://sepolia.etherscan.io/address/0x55f12dca39e156001142b62f0de1b3bdd21e1d02)
+- [*PERL Ledger sepolia*](https://sepolia.etherscan.io/address/0x825164250e45a7be171ef13f6f9b03b66e956948)
 - *mainnet*

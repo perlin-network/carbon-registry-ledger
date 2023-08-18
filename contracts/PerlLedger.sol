@@ -9,13 +9,13 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 contract PerlLedger is Initializable, OwnableUpgradeable {
     // Defining the Structure for Credit Overall
     struct CreditOverall {
-        string txId;
+        string txRef;
         string txType;
         uint256 credit;
     }
 
     // Mapping to store CreditOverall objects by txRef
-    mapping(string => CreditOverall) public creditOveralls;
+    mapping(string => CreditOverall[]) public creditOveralls;
 
     // Initialize function replaces the constructor in upgradeable contracts
     function initialize() public initializer {
@@ -24,14 +24,17 @@ contract PerlLedger is Initializable, OwnableUpgradeable {
 
     // Function to create a new CreditOverall
     function createCreditOverall(string memory _txId, string memory _txRef, string memory _txType, uint256 _credit) public onlyOwner {
-        creditOveralls[_txRef] = CreditOverall(_txId, _txType, _credit);
+        creditOveralls[_txId].push(CreditOverall(_txRef, _txType, _credit));
     }
 
-    // Function to query a CreditOverall by txRef
-    function getCreditOverall(string memory _txRef) public view returns (CreditOverall memory) {
-        return creditOveralls[_txRef];
+    // Function to query a CreditOverall by txId
+    function getCreditOveralls(string memory _txId) public view returns (CreditOverall[] memory) {
+        return creditOveralls[_txId];
     }
 
-    // Additional functions can be added for updating, deleting, etc., protected with onlyOwner
+    // Function to query a CreditOveralls count by txId
+    function getCreditOverallCount(string memory _txId) public view returns (uint256) {
+        return creditOveralls[_txId].length;
+    }
 }
 
