@@ -5,6 +5,8 @@ async function main() {
   console.log("Deploying PerlLedger...");
 
   const perlLedger = await upgrades.deployProxy(PerlLedger, [], { initializer: 'initialize' });
+  await perlLedger.waitForDeployment();
+
   const address = await perlLedger.getAddress();
 
   console.log("PerlLedger deployed to:", address);
