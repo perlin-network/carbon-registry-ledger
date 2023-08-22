@@ -24,26 +24,26 @@ import type {
 } from "../common";
 
 export declare namespace PerlLedger {
-  export type CreditOverallStruct = {
-    txRef: string;
-    txType: string;
-    credit: BigNumberish;
+  export type CarbonTransferStruct = {
+    requestRef: string;
+    status: string;
+    creditAmount: BigNumberish;
   };
 
-  export type CreditOverallStructOutput = [
-    txRef: string,
-    txType: string,
-    credit: bigint
-  ] & { txRef: string; txType: string; credit: bigint };
+  export type CarbonTransferStructOutput = [
+    requestRef: string,
+    status: string,
+    creditAmount: bigint
+  ] & { requestRef: string; status: string; creditAmount: bigint };
 }
 
 export interface PerlLedgerInterface extends Interface {
   getFunction(
     nameOrSignature:
-      | "createCreditOverall"
-      | "creditOveralls"
-      | "getCreditOverallCount"
-      | "getCreditOveralls"
+      | "addCarbonTransfer"
+      | "carbonTransfers"
+      | "getCarbonTransferCount"
+      | "getCarbonTransfers"
       | "initialize"
       | "owner"
       | "renounceOwnership"
@@ -55,19 +55,19 @@ export interface PerlLedgerInterface extends Interface {
   ): EventFragment;
 
   encodeFunctionData(
-    functionFragment: "createCreditOverall",
+    functionFragment: "addCarbonTransfer",
     values: [string, string, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "creditOveralls",
+    functionFragment: "carbonTransfers",
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "getCreditOverallCount",
+    functionFragment: "getCarbonTransferCount",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getCreditOveralls",
+    functionFragment: "getCarbonTransfers",
     values: [string]
   ): string;
   encodeFunctionData(
@@ -85,19 +85,19 @@ export interface PerlLedgerInterface extends Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "createCreditOverall",
+    functionFragment: "addCarbonTransfer",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "creditOveralls",
+    functionFragment: "carbonTransfers",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getCreditOverallCount",
+    functionFragment: "getCarbonTransferCount",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getCreditOveralls",
+    functionFragment: "getCarbonTransfers",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
@@ -180,29 +180,38 @@ export interface PerlLedger extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
-  createCreditOverall: TypedContractMethod<
-    [_txId: string, _txRef: string, _txType: string, _credit: BigNumberish],
+  addCarbonTransfer: TypedContractMethod<
+    [
+      _serialNo: string,
+      _requestRef: string,
+      status: string,
+      _creditAmount: BigNumberish
+    ],
     [void],
     "nonpayable"
   >;
 
-  creditOveralls: TypedContractMethod<
+  carbonTransfers: TypedContractMethod<
     [arg0: string, arg1: BigNumberish],
     [
       [string, string, bigint] & {
-        txRef: string;
-        txType: string;
-        credit: bigint;
+        requestRef: string;
+        status: string;
+        creditAmount: bigint;
       }
     ],
     "view"
   >;
 
-  getCreditOverallCount: TypedContractMethod<[_txId: string], [bigint], "view">;
+  getCarbonTransferCount: TypedContractMethod<
+    [_serialNo: string],
+    [bigint],
+    "view"
+  >;
 
-  getCreditOveralls: TypedContractMethod<
-    [_txId: string],
-    [PerlLedger.CreditOverallStructOutput[]],
+  getCarbonTransfers: TypedContractMethod<
+    [_serialNo: string],
+    [PerlLedger.CarbonTransferStructOutput[]],
     "view"
   >;
 
@@ -223,33 +232,38 @@ export interface PerlLedger extends BaseContract {
   ): T;
 
   getFunction(
-    nameOrSignature: "createCreditOverall"
+    nameOrSignature: "addCarbonTransfer"
   ): TypedContractMethod<
-    [_txId: string, _txRef: string, _txType: string, _credit: BigNumberish],
+    [
+      _serialNo: string,
+      _requestRef: string,
+      status: string,
+      _creditAmount: BigNumberish
+    ],
     [void],
     "nonpayable"
   >;
   getFunction(
-    nameOrSignature: "creditOveralls"
+    nameOrSignature: "carbonTransfers"
   ): TypedContractMethod<
     [arg0: string, arg1: BigNumberish],
     [
       [string, string, bigint] & {
-        txRef: string;
-        txType: string;
-        credit: bigint;
+        requestRef: string;
+        status: string;
+        creditAmount: bigint;
       }
     ],
     "view"
   >;
   getFunction(
-    nameOrSignature: "getCreditOverallCount"
-  ): TypedContractMethod<[_txId: string], [bigint], "view">;
+    nameOrSignature: "getCarbonTransferCount"
+  ): TypedContractMethod<[_serialNo: string], [bigint], "view">;
   getFunction(
-    nameOrSignature: "getCreditOveralls"
+    nameOrSignature: "getCarbonTransfers"
   ): TypedContractMethod<
-    [_txId: string],
-    [PerlLedger.CreditOverallStructOutput[]],
+    [_serialNo: string],
+    [PerlLedger.CarbonTransferStructOutput[]],
     "view"
   >;
   getFunction(

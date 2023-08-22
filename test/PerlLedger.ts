@@ -4,24 +4,24 @@ import { PerlLedger } from "../types";
 
 describe("PerlLedger", function () {
 
-  it("Should create and retrieve a CreditOveralls", async function () {
+  it("Should create and retrieve a Carbon Transfer", async function () {
     const PerlLedger = await ethers.getContractFactory("PerlLedger");
     const perlLedger = await upgrades.deployProxy(PerlLedger, [], { initializer: 'initialize' }) as unknown as PerlLedger;
 
-    const txId = "tx1";
-    const txRef = "ref1";
-    const txType = "0";
-    const credit = 100;
+    const serialNo = "SG-ITMO-1-002-2022-0-101-1100";
+    const requestRef = "1";
+    const status = "Approved";
+    const creditAmount = 100;
 
-    await perlLedger.createCreditOverall(txId, txRef, txType, credit);
+    await perlLedger.addCarbonTransfer(serialNo, requestRef, status, creditAmount);
 
-    const result = await perlLedger.getCreditOveralls(txId);
-    const resultCount = await perlLedger.getCreditOverallCount(txId);
+    const result = await perlLedger.getCarbonTransfers(serialNo);
+    const resultCount = await perlLedger.getCarbonTransferCount(serialNo);
 
     expect(result).to.not.be.undefined;
     expect(resultCount).to.equal(1);
-    expect(result[0].txRef).to.equal(txRef);
-    expect(result[0].txType).to.equal(txType);
-    expect(result[0].credit).to.equal(credit);
+    expect(result[0].requestRef).to.equal(requestRef);
+    expect(result[0].status).to.equal(status);
+    expect(result[0].creditAmount).to.equal(creditAmount);
   });
 });
