@@ -1,12 +1,12 @@
 import { expect } from "chai";
 import { ethers, upgrades } from "hardhat";
-import { PerlLedger } from "../types";
+import { PerlLedgerV1 } from "../types";
 
-describe("PerlLedger", function () {
+describe("PerlLedgerV1", function () {
 
   it("Should create and retrieve a Carbon Transfer", async function () {
-    const PerlLedger = await ethers.getContractFactory("PerlLedger");
-    const perlLedger = await upgrades.deployProxy(PerlLedger, [], { initializer: 'initialize' }) as unknown as PerlLedger;
+    const PerlLedger = await ethers.getContractFactory("PerlLedgerV1");
+    const perlLedger = await upgrades.deployProxy(PerlLedger, [], { initializer: 'initialize' }) as unknown as PerlLedgerV1;
 
     const serialNo = "SG-ITMO-1-002-2022-0-101-1100";
     const requestRef = "1";

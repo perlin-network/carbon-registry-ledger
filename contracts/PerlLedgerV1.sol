@@ -6,7 +6,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract PerlLedger is Initializable, OwnableUpgradeable {
+contract PerlLedgerV1 is Initializable, OwnableUpgradeable {
     // Defining the Structure for Carbon Transfer
     struct CarbonTransfer {
         string requestRef;

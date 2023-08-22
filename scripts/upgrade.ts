@@ -7,12 +7,14 @@ async function main() {
     return;
   }
       
-  const PerlLedger = await ethers.getContractFactory("PerlLedger");
-  console.log("Upgrading PerlLedger...");
+  const PerlLedger = await ethers.getContractFactory("PerlLedgerV1");
+  console.log(`Upgrading PerlLedger with proxy ${config.proxyAddress}...`);
 
-  await upgrades.upgradeProxy(config.proxyAddress, PerlLedger);
+  //await upgrades.forceImport(config.proxyAddress, PerlLedger);
 
-  console.log("PerlLedger upgraded");
+  const updated = await upgrades.upgradeProxy(config.proxyAddress, PerlLedger);
+
+  console.log("PerlLedger upgraded at ", await updated.getAddress());
 }
 
 main().catch((error) => {

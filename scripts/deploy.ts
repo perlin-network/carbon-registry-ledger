@@ -1,7 +1,7 @@
 import { ethers, upgrades } from "hardhat";
 
 async function main() {
-  const PerlLedger = await ethers.getContractFactory("PerlLedger");
+  const PerlLedger = await ethers.getContractFactory("PerlLedgerV1");
   console.log("Deploying PerlLedger...");
 
   const perlLedger = await upgrades.deployProxy(PerlLedger, [], { initializer: 'initialize' });

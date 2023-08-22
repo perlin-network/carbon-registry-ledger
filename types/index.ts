@@ -12,5 +12,5 @@ export type { Initializable } from "./@openzeppelin/contracts-upgradeable/proxy/
 export { Initializable__factory } from "./factories/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable__factory";
 export type { ContextUpgradeable } from "./@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable";
 export { ContextUpgradeable__factory } from "./factories/@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable__factory";
-export type { PerlLedger } from "./contracts/PerlLedger";
-export { PerlLedger__factory } from "./factories/contracts/PerlLedger__factory";
+export type { PerlLedgerV1 } from "./contracts/PerlLedgerV1";
+export { PerlLedgerV1__factory } from "./factories/contracts/PerlLedgerV1__factory";

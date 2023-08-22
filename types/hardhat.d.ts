@@ -26,9 +26,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ContextUpgradeable__factory>;
     getContractFactory(
-      name: "PerlLedger",
+      name: "PerlLedgerV1",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.PerlLedger__factory>;
+    ): Promise<Contracts.PerlLedgerV1__factory>;
 
     getContractAt(
       name: "OwnableUpgradeable",
@@ -46,10 +46,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.ContextUpgradeable>;
     getContractAt(
-      name: "PerlLedger",
+      name: "PerlLedgerV1",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.PerlLedger>;
+    ): Promise<Contracts.PerlLedgerV1>;
 
     deployContract(
       name: "OwnableUpgradeable",
@@ -64,9 +64,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ContextUpgradeable>;
     deployContract(
-      name: "PerlLedger",
+      name: "PerlLedgerV1",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.PerlLedger>;
+    ): Promise<Contracts.PerlLedgerV1>;
 
     deployContract(
       name: "OwnableUpgradeable",
@@ -84,10 +84,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.ContextUpgradeable>;
     deployContract(
-      name: "PerlLedger",
+      name: "PerlLedgerV1",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.PerlLedger>;
+    ): Promise<Contracts.PerlLedgerV1>;
 
     // default types
     getContractFactory(
